@@ -11,6 +11,9 @@ contract JobCredential is ERC721URIStorage {
     mapping(uint => address) minterAddress; //tokenId => minterAddress
     mapping(uint => address) ownerAddress; //tokenId => ownerAddress
 
+    event Mint(address _minter, uint _timeStamp);
+    event TransferNFT(address _to, address _from, uint timeStamp);
+
     constructor(string memory JobCredential, string memory JBC)
         ERC721(JobCredential, JBC)
     {}
@@ -30,6 +33,7 @@ contract JobCredential is ERC721URIStorage {
         _tokenIds.increment();
         _safeMint(msg.sender, newIds);
         _setTokenURI(newIds, URI);
+        emit Mint(msg.sender, block.timestamp);
     }
 
     function checkOwnerMinter(uint _tokenId) public view returns (bool) {
@@ -39,5 +43,6 @@ contract JobCredential is ERC721URIStorage {
     function transfer(address _to, uint _tokenId) public onlyOwner(_tokenId) {
         ownerAddress[_tokenId] = msg.sender;
         transferFrom(msg.sender, _to, _tokenId);
+        emit TransferNFT(_to, msg.sender, block.timestamp);
     }
 }
