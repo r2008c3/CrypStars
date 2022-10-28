@@ -5,12 +5,18 @@ async function main() {
   const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
   const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
 
-  const lockedAmount = hre.ethers.utils.parseEther("1");
+  const lockedAmount = hre.ethers.utils.parseEther("0.05");
 
-  const Lock = await hre.ethers.getContractFactory("MintFactory");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const JobCredential = await hre.ethers.getContractFactory("JobCredential");
+  const jobCredential = await JobCredential.deploy(unlockTime, {
+    value: lockedAmount,
+  });
 
-  await lock.deployed();
+  await jobCredential.deployed();
+
+  console.log(
+    `Lock with 0.05 ETH and unlock timestamp ${unlockTime} deployed to ${jobCredential.address}`
+  );
 }
 
 // We recommend this pattern to be able to use async/await everywhere
