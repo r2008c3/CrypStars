@@ -8,15 +8,11 @@ async function main() {
   const lockedAmount = hre.ethers.utils.parseEther("0.05");
 
   const JobCredential = await hre.ethers.getContractFactory("JobCredential");
-  const jobCredential = await JobCredential.deploy(unlockTime, {
-    value: lockedAmount,
-  });
+  const jobCredential = await JobCredential.deploy("JobPoap", "JBP");
 
   await jobCredential.deployed();
 
-  console.log(
-    `Lock with 0.05 ETH and unlock timestamp ${unlockTime} deployed to ${jobCredential.address}`
-  );
+  console.log(`MintFactory is deployed to ${jobCredential.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
