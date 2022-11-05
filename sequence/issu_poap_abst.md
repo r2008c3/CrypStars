@@ -1,17 +1,20 @@
+```mermaid
+
 sequenceDiagram
 	autonumber
 	actor user as User
 	actor dao as Admin@DAO
-	participant poap as ”­s”»’fˆ—•”•ª
+	participant poap as ç™ºè¡Œåˆ¤æ–­å‡¦ç†éƒ¨åˆ†
 	
-	user ->> poap : POAP‚Ì”­s\¿
-	poap ->> user : POAP‚Ì”­s“à—e‚Ì“ü—Í—v‹
-	user ->> poap : Šó–]‚Ì”­s“à—e‚Ì“ü—Í
-	poap ->> dao : ”­s“à—e‚ÌŠm”F—v‹
-	dao ->> poap : ”­s“à—e‚Ì³”For”­s‰Â”\‚È‘ãˆÄ‚ð’ñŽ¦or”Û”F
-	poap ->> user : ”­sŠm”F’Ê’mi³”For”­s‰Â”\‘ãˆÄor”Û”F’Ê’mB”Û”F‚Ìê‡‚ÍƒV[ƒPƒ“ƒXI—¹j
-	user ->> user : ³”Fó‹µŠm”Fi‘ãˆÄ‚ª‚ ‚éê‡‚Í‘ãˆÄ‚Å‘Ã‹¦‚·‚éê‡ŽŸ‚ÌƒV[ƒPƒ“ƒX‚Éisj
-	user ->> poap : ”­s—v‹iMINTj
-	poap ->> user : –¼—v‹EƒKƒX‘ã—v‹‚È‚Ç‚ÌŠm”F
-	user ->> poap : ³”F
-	poap ->> user : POAP”­siƒRƒ“ƒgƒ‰ƒNƒgŽÀsj
+	user ->> poap : POAPã®ç™ºè¡Œç”³è«‹
+	poap ->> user : POAPã®ç™ºè¡Œå†…å®¹ã®å…¥åŠ›è¦æ±‚
+	user ->> poap : å¸Œæœ›ã®ç™ºè¡Œå†…å®¹ã®å…¥åŠ›
+	poap ->> dao : ç™ºè¡Œå†…å®¹ã®ç¢ºèªè¦æ±‚
+	dao ->> poap : ç™ºè¡Œå†…å®¹ã®æ‰¿èªorç™ºè¡Œå¯èƒ½ãªä»£æ¡ˆã‚’æç¤ºorå¦èª
+	poap ->> user : ç™ºè¡Œç¢ºèªé€šçŸ¥ï¼ˆæ‰¿èªorç™ºè¡Œå¯èƒ½ä»£æ¡ˆorå¦èªé€šçŸ¥ã€‚å¦èªã®å ´åˆã¯ã‚·ãƒ¼ã‚±ãƒ³ã‚¹çµ‚äº†ï¼‰
+	user ->> user : æ‰¿èªçŠ¶æ³ç¢ºèªï¼ˆä»£æ¡ˆãŒã‚ã‚‹å ´åˆã¯ä»£æ¡ˆã§å¦¥å”ã™ã‚‹å ´åˆæ¬¡ã®ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã«é€²è¡Œï¼‰
+	user ->> poap : ç™ºè¡Œè¦æ±‚ï¼ˆMINTï¼‰
+	poap ->> user : ç½²åè¦æ±‚ãƒ»ã‚¬ã‚¹ä»£è¦æ±‚ãªã©ã®ç¢ºèª
+	user ->> poap : æ‰¿èª
+	poap ->> user : POAPç™ºè¡Œï¼ˆã‚³ãƒ³ãƒˆãƒ©ã‚¯ãƒˆå®Ÿè¡Œï¼‰
+```
