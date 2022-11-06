@@ -1,13 +1,25 @@
-# Sample Hardhat Project
+# CrypStars Contract
+---
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+CrypStars has two contract files.
 
-Try running some of the following tasks:
+### CrypStars.sol
+This is main contract that inherited ERC721URIStorage to mint NFT, get tokenURI and minted NFT infomation on each addres.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+#### Functions
+- mintNFT (mint new NFT)
+- tokenURI (get tokenURI)
+- getAllMintedNFTs (get all Minted NFT info on each address)
+
+---
+
+### MintApprove.sol
+This contract allows each DAO can set new project and allowed address to mint.
+
+#### Functions
+- allowMint (DAO allow each address to mint)
+- setDAO (make new DAO)
+- setProject (make new project)
+
+
+
