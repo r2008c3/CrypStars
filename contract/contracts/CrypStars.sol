@@ -4,32 +4,42 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./libraries/Base64.sol";
-import "hardhat/console.sol";
+import "./MintApprove.sol";
 
-contract JobCredential is ERC721URIStorage {
+contract JobCredential is ERC721URIStorage, MintApprove {
     struct NftAttributes {
         string name;
         string imageURL;
         address minterAddress;
     }
+
     NftAttributes[] JobNfts;
+
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
-    mapping(address => uint[]) mintedNFTs;
-    mapping(uint => NftAttributes) nftInfo; //tokenId => nftAttributes
+
+    mapping(address => uint[]) mintedNFTs; //verify minted NFTs from address
 
     event Mint(address _minter, uint _timeStamp);
     event TransferNFT(address _to, address _from, uint timeStamp);
 
-    constructor(string memory JobPoap, string memory JBC)
-        ERC721(JobPoap, JBC)
+    constructor(string memory CrypStars, string memory CPS)
+        ERC721(CrypStars, CPS)
     {}
 
-    function mintJobCredential(string memory _name, string memory _imageURI)
-        public
-    {
+    // check if msg.sender is approved to mint
+    modifier onlyApproved(uint _projectId) {
+        require(idToProjects[_projectId].mintApproved[msg.sender]);
+        _;
+    }
+
+    // mint NFTs
+    function mintNFT(
+        string memory _name,
+        string memory _imageURI,
+        string memory _projectName
+    ) public onlyApproved(nameToProjectId[_projectName]) {
         uint256 newIds = _tokenIds.current();
-        console.log(newIds);
         _tokenIds.increment();
         JobNfts.push(
             NftAttributes({
@@ -38,13 +48,13 @@ contract JobCredential is ERC721URIStorage {
                 minterAddress: msg.sender
             })
         );
-        //Todo: addressごとにtokenIdsの配列が追加されているか下記の挙動チェック
-        //Todo: 新しいaddressの時には、mappingが追加され、既存のaddressの時にはuint[]に追加される
+
         mintedNFTs[msg.sender].push(newIds);
         _safeMint(msg.sender, newIds);
         emit Mint(msg.sender, block.timestamp);
     }
 
+    // get NFT URI
     function tokenURI(uint256 _tokenId)
         public
         view
@@ -72,6 +82,7 @@ contract JobCredential is ERC721URIStorage {
         return output;
     }
 
+    //get all NFT informations in specific address
     function getAllMintedNFTs(address _checkedAddress)
         public
         view
