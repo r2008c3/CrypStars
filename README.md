@@ -9,11 +9,10 @@
 
 # 各ディレクトリについて
 ## client
+Not Finished
+
 
 ## contract
-# CrypStars Contract
----
-
 CrypStars has two contract files.
 
 ### CrypStars.sol
