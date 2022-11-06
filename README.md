@@ -9,14 +9,19 @@
 
 # 各ディレクトリについて
 ## client
-Not Finished
+FigmaでUIのデザインを行いましたが、フロントの実装が出来なかったため、シンプルなボタン等のみでの実装を行っています。
+Reactでの実装を行っています。
+
+↓下記URLにて、FigmaでUIのデザインを記載しています。
+https://www.figma.com/file/TC63XqLXS4UR7byTFexpxq/Untitled?node-id=0%3A1
 
 
 ## contract
-CrypStars has two contract files.
+コントラクトディレクトリには、2つのsolidityファイルがあります。
 
 ### CrypStars.sol
-This is main contract that inherited ERC721URIStorage to mint NFT, get tokenURI and minted NFT infomation on each addres.
+このコントラクトは、ERC721URIStorage、MintApproveを継承しています。
+NFTをミント、管理するためのコントラクトです。
 
 #### Functions
 - mintNFT (mint new NFT)
@@ -26,7 +31,7 @@ This is main contract that inherited ERC721URIStorage to mint NFT, get tokenURI 
 ---
 
 ### MintApprove.sol
-This contract allows each DAO can set new project and allowed address to mint.
+このコントラクトは、新しいDAOやプロジェクトのセット、アドレスごとのミント許可などを設定することが可能です。
 
 #### Functions
 - allowMint (DAO allow each address to mint)
